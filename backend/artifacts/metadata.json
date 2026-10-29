@@ -1,0 +1,39 @@
+{
+  "model_version": "v1793266581",
+  "algorithm": "XGBoost Classifier (with Probability Calibration)",
+  "trained_at": "2026-10-29T15:06:21.142454",
+  "training_duration_seconds": 1.87,
+  "dataset_fingerprint": "459b406b61918265",
+  "feature_schema_version": "1.0.0",
+  "is_calibrated": true,
+  "thresholds": {
+    "legitimate": 0.3,
+    "phishing": 0.7
+  },
+  "sample_counts": {
+    "total": 245,
+    "train": 171,
+    "val": 23,
+    "test": 51
+  },
+  "domain_counts": {
+    "train_domains": 157,
+    "val_domains": 23,
+    "test_domains": 45,
+    "domain_leakage": 0
+  },
+  "class_distribution": {
+    "0": 140,
+    "1": 105
+  },
+  "hyperparameters": {
+    "n_estimators": 150,
+    "max_depth": 5,
+    "learning_rate": 0.08,
+    "subsample": 0.85,
+    "colsample_bytree": 0.85,
+    "scale_pos_weight": 1.3333333333333333,
+    "eval_metric": "logloss",
+    "random_state": 42
+  }
+}

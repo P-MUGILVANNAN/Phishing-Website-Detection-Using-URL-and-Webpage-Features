@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - PROJECT_NAME=PhishGuard AI
+      - VERSION=1.0.0
+      - DATABASE_URL=sqlite:///./phishguard.db
+      - ARTIFACTS_DIR=./artifacts
+      - ENABLE_WEBPAGE_FETCH=false
+      - ADMIN_API_KEY=phishguard-production-secret
+    volumes:
+      - ./backend/artifacts:/app/artifacts
+      - ./backend/phishguard.db:/app/phishguard.db
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
